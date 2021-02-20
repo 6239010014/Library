@@ -16,7 +16,7 @@ if($countuser==1)
 {
     print "Welcome ".$userdata['uname'];
     print 'meta http-equiv="refresh" content="2;url=index.php>';
-    JAlert("สำเร็จ");
+    JAlert("Login success");
     $_SESSION['login_username']=$userdata['uname'];
     $_SESSION['login_fullname']=$userdata['fullname'];
     redirect('index.php');

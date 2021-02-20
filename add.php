@@ -1,25 +1,25 @@
-<?php 
- require_once('head.php')
+<?php
+    require_once('head.php')
 ?>
-<br>
- <h1 align="center">Add book</h1>
-            <form action="add.pro.php" method="post" align="center" enctype="mutipart/form-data">
-            <div class="centered">
-                <div class="row-sm">
-                    Book name : &nbsp;<input type="text" name="bookname">        
-                </div>
+
+<body>
+    <div class="container  col-auto mt-5">
+        <form method="post" action="add.pro.php" enctype="multipart/form-data">
+            <div class="box">
+                <h1>Add Document</h1>
+                <input type="text"  id="Dname" name="Dname" placeholder="Document Name" required>
+                <input type="text"  id="DISBN" name="DISBN" placeholder="Document ISBN " required>
+                <input type="text"  id="Dauthor" name="Dauthor" placeholder="Document Author" required>
+                <input type="file"  id="PDFfile" name="PDFfiles[]" multiple required>
                 <br>
-                <div class="row-sm">
-                    Book File : &nbsp;<input type="file" name="pdffiles[]" multiple>
-                </div>
-                <div class="row-sm">
-                    ISBN : &nbsp;<input type="text" name="isbn">
-                </div>
-                <br>
-                <div class="row-sm">
-                    <button type="submit" class="btn btn-md  btn-success">Upload</button>
-                </div>
-            </form>
-<?php 
- require_once('footer.php')
+                <input class="btn-green" name="login" type="submit" value="Add"><br>
+            </div>
+        </form>
+    </div>
+</body>
+
+<?php
+    require('footer.php')
 ?>
+
+</html>

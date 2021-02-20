@@ -1,19 +1,25 @@
 <?php
-require_once('head.php');
+    require_once('head.php')
 ?>
-            <h1 align="center">Login</h1>
-            <form action="checklogin.php" method="post">
-            <div class="centered">
-                <div class="row-sm">
-                    Username <input type="text" name="username">        
-                </div>
-                <div class="row-sm">
-                    password <input type="password" name="password">
-                </div>
-                <div class="row-sm">
-                    <input type="submit" value="login">
-                </div>
-            </form>
+
+<body>
+    <div class="container  col-auto mt-5">
+        <form method="post" action="checklogin.php">
+            <div class="box">
+                <h1>Log In</h1>
+                <img src="assets/image/user.svg">
+                <input type="text"  id="username" name="username" placeholder="Username">
+                <span id="usernameavailable"></span>
+                <img src="assets/image/password.svg">
+                <input type="password"  id="password" name="password" placeholder="Password">
+                <input class="btn-green" name="login" type="submit" value="Login"><br>
+            </div>
+        </form>
+    </div>
+</body>
+
 <?php
     require('footer.php')
 ?>
+
+</html>
