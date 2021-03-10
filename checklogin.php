@@ -5,13 +5,14 @@ require_once('dbcon.inc.php');
 $inputUsername=$_POST['username'];
 $inputPassword=$_POST['password'];
 
-
+ 
 $SQL='select * from user where uname="'.$inputUsername.'" AND upass = "'.md5($inputPassword).'" ';
 
-echo "$SQL";   
-$result=$db->query($SQL);
-$countuser = $result->num_rows;
-$userdata=$result->fetch_assoc();
+echo "$SQL";
+$db = $db->connect();
+$db ->query($SQL);
+$countuser = $db->num_rows;
+$userdata=$db->fetch_assoc();
 if($countuser==1)
 {
     print "Welcome ".$userdata['uname'];

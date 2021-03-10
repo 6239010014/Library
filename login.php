@@ -9,6 +9,7 @@
                 <h1>Log In</h1>
                 <img src="assets/image/user.svg">
                 <input type="text"  id="username" name="username" placeholder="Username">
+                <!-- "pattern="[0-9]" -->
                 <span id="usernameavailable"></span>
                 <img src="assets/image/password.svg">
                 <input type="password"  id="password" name="password" placeholder="Password">

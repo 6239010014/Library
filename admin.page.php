@@ -15,7 +15,7 @@
             <div class="navbar sticky-top navbar-success bg-success  px-5">
                 <ul class="navbar-nav p-0 "></ul>
                     <li>
-                        <div class="color-in-navbar"><?php echo $_SESSION['login_fullname']; ?> | <a href="logout.php">ออกจากระบบ</a></div>
+                        <div class="color-in-navbar"><a href="add.php">Add Document</a> |<?php echo $_SESSION['login_fullname']; ?> | <a href="logout.php">Logut/Sign Out</a></div>
                     </li>
                 </ul>
             </div>

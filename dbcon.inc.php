@@ -1,13 +1,16 @@
-<?php   
-session_start();
- $dbserver = 'localhost';
- $dbuser = 'root';
- $dbpass = '';
- $dbname = 'library';
+<?php
+ session_start();
+class DataBase
+{
+ private $dbserver = 'localhost';
+ private $dbuser = 'root';
+ private $dbpass = '';
+ private $dbname = 'library';
+     
+public function connect()
+    {
+        $db = new mysqli($this->dbserver,$this->dbuser,$this->dbpass,$this->dbname);
+        $db->set_charset("uft8");
+    }
+}
 
- $db = mysqli_connect($dbserver,$dbuser,$dbpass,$dbname);
- $db->set_charset("uft8");
-
-
-require_once('fn.php');
-?>
