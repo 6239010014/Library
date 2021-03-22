@@ -1,7 +1,7 @@
 <?php 
     require_once('dbcon.inc.php');
     require_once('head.php');
-    require_once('fn.php');
+    require_once('fn.php'); 
     if(!isset($_SESSION['login_username']))
     {
         redirect('login.php');
@@ -9,13 +9,16 @@
     else
     {
         
-?>  
+?>
+<style>
+</style>  
 <body>
         <div class="conainer-fluid">
             <div class="navbar sticky-top navbar-success bg-success  px-5">
                 <ul class="navbar-nav p-0 "></ul>
                     <li>
-                        <div class="color-in-navbar"><?php echo $_SESSION['login_fullname']; ?> | <a href="logout.php">ออกจากระบบ</a></div>
+                    <div class="color-in-navbar">   
+                    <a disable class="p-1 mb-1 bg-primary text-light"><?php echo $_SESSION['login_fullname']."<b>&nbsp(User)</b>"; ?></a> <a class="p-1 mb-1 bg-danger text-light"href="logout.php">Logout/Sign Out</a></div>
                     </li>
                 </ul>
             </div>
@@ -27,10 +30,16 @@ $result=$db->query($sb);
 
 while($book=$result->fetch_assoc()){
     print_r($book);
-    print "<hr>"; 
+    print "<br>"; 
 }
 ?-->
                 <table class="table table-hover">
+                <br>
+                <form action="#" method="get">
+                    <input class="topnav-left"type="text" name="txt_kw" id="txt_kw" placeholder="Search....">&nbsp;<button class="btn btn-sm btn-success" >Search</button>&nbsp;
+                </form>
+                    <br>
+                    <br>
                     <thead>
                         <tr>
                             <th width="10%">No.</th>
@@ -43,28 +52,46 @@ while($book=$result->fetch_assoc()){
                     </thead>
                     <tbody>
                     <?php
+                    $search = isset($_GET['txt_kw']) ? $_GET['txt_kw'] : '';
+                    
 
-                        $get_dcm = $db->show_document();
-                        $i = 1;
-                        foreach ($get_dcm as $document) {
-                            ?>
-                        <tr>
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $document['dname'] ?></td>
-                            <td><?php echo $document['dtype'] ?></td>
-                            <td><?php echo $document['dauthor'] ?></td>
-                            <td><?php echo $document['disbn'] ?></td>
-                            <td><buttom class='btn btn-info' onclick=''>Open</buttom></td>
-                        </tr>
-                    </tbody>
-                <?php
-                        $i++;
+                    $SQL ="SELECT * FROM document where dname like '%$search%' or disbn like '%$search%' ";
+                    $result = $db->query($SQL);
+                    if($result = $db->query($SQL)){
+                    while ($row = $result->fetch_array(MYSQLI_ASSOC)){
+                    ?> 
+                <tr>
+                    <td align="center"><?php
+                            printf ("%s \n", $row['did'])
+                    ?></td>
+                    <td align="center"><?php
+                            printf ("%s \n", $row['dname']); 
+                            print "<br>";                    
+                    ?></td>
+                    <td align="center"><?php
+                            printf ("%s\n", $row['dtype']); 
+                            print "<br>";
+                    ?></td>
+                    <td align="center"><?php 
+                            printf ("%s\n", $row['dauthor']); 
+                            print "<br>"; 
+                    ?></td>   
+                    <td align="center"><?php
+                            printf ("%s\n", $row['disbn']); 
+                            print "<br>";
+                    ?></td>
+                    <td><button class="btn btn-dark btn-m" onclick="return OpenfilePDF()">Read</button> </td>
+                </tr>
+                <?php 
+                        }
+                $result->free_result();
                     }
-                    ?>
+                }
+                ?>
+                </tbody>
 <!-- end content here -->
 <?php
     {
     require_once('footer.php');
     }
-}
 ?>

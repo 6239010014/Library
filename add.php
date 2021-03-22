@@ -1,12 +1,6 @@
 <?php
     require_once('head.php');
     require_once('fn.php');
-    if(!isset($_SESSION['login_username']))
-    {
-        redirect('login.php');
-    }
-    else
-    {
 ?>
 
 <body>
@@ -16,7 +10,7 @@
                 <h1>Add Document</h1>
                 <input type="text"  id="Dname" name="Dname" placeholder="Document Name" required>
                 <input type="text"  id="Dtype" name="Dtype" placeholder="Document Type" required>
-                <input type="text"  id="DISBN" name="DISBN" placeholder="Document ISBN " required pattern="[0 - 9]{13,13}">
+                <input type="text"  id="DISBN" name="DISBN" placeholder="Document ISBN " required>
                 <input type="text"  id="Dauthor" name="Dauthor" placeholder="Document Author" required>
                 <input type="file"  id="PDFfile" name="PDFfiles[]" multiple required>
                 <br>
@@ -35,5 +29,4 @@
     {
     require_once('footer.php');
     }
-}
 ?>
